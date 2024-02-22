@@ -26,15 +26,8 @@ export default function App() {
   };
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 10,
-      }}
-    >
-      <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <View style={{ ...styles.container, gap: 10 }}>
         <Button title="Pick an image from photos" onPress={pickImage} />
         <Button title="Pick an image from camera roll" onPress={captureImage} />
       </View>
