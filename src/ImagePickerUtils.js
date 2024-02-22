@@ -5,14 +5,14 @@ const IMAGE_CONFIG = {
   mediaTypes: ImagePicker.MediaTypeOptions.Images,
   quality: 1,
   aspect: [4, 3],
-  allowsEditing: true,
+  allowsMultipleSelection: true,
 };
 
 const handleResult = (result) => {
   if (!result.cancelled) {
     return result;
   }
-  return;
+  return false;
 };
 
 export const openCamera = async () => {

@@ -7,21 +7,25 @@ export default function App() {
   const [images, setImages] = useState([]);
 
   const updateState = (uri) => {
-    setImages([...images, uri]);
+    setImages([...images, ...uri]);
   };
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await openGallery();
     if (!result.cancelled) {
-      updateState(result.assets[0].uri);
+      updateState(getImagesURIs(result.assets));
     }
+  };
+
+  const getImagesURIs = (assets) => {
+    return assets.map((item) => item.uri);
   };
 
   const captureImage = async () => {
     let result = await openCamera();
     if (!result.cancelled) {
-      updateState(result.assets[0].uri);
+      updateState(getImagesURIs(result.assets));
     }
   };
 
